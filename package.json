@@ -8,6 +8,7 @@
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "migration": "ts-node-dev ./node_modules/typeorm/cli.js migration:run",
+    "migration-revert": "ts-node-dev ./node_modules/typeorm/cli.js migration:revert",
     "create-migration": "ts-node-dev ./node_modules/typeorm/cli.js migration:create -n "
   },
   "keywords": [],
