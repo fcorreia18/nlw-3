@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { getRepository } from "typeorm";
-import Orphanages from "../models/Orphanages";
+import Orphanages from "../models/Orphanage";
 export default {
     async show(req: Request, res: Response) {
         const { id } = req.params;
@@ -19,7 +19,10 @@ export default {
         const { name, longitude, latitude, open_on_weekends, opening_hours, instrutions, about } = req.body;
         const orphanagesRepository = getRepository(Orphanages);
 
-        const orphanage = orphanagesRepository.create({ name, longitude, latitude, open_on_weekends, opening_hours, instrutions, about });
+        const requestImages = req.files as Express.Multer.File[];
+        const images = requestImages.map(image => { return { path: image.filename } })
+
+        const orphanage = orphanagesRepository.create({ name, longitude, latitude, open_on_weekends, opening_hours, instrutions, about, images });
         await orphanagesRepository.save(orphanage);
 
         res.status(201).json(orphanage);
