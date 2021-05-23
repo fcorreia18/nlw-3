@@ -1,4 +1,5 @@
 import express, { Application } from 'express'
+import 'express-async-errors'
 import './database/connection';
 import route from './routes';
 const app: Application = express();
