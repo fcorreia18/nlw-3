@@ -45,7 +45,7 @@ export default {
         }
 
         const schema = Yup.object().shape({
-            name: Yup.string().required(),
+            name: Yup.string().required('Nome é obrigatório'),
             longitude: Yup.number().required(),
             latitude: Yup.number().required(),
             open_on_weekends: Yup.boolean().required(),
